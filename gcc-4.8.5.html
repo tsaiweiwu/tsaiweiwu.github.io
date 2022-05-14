@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Tree Example</title>
+    <title>gcc-4.8.5</title>
 
     <style>
 	
@@ -53,7 +53,13 @@ var treeData = [
             "children": [
               {
                 "name": "learning/conda-5.1.0-py27-cpu",
-                "parent": "anaconda/5.1.0-py27"
+                "parent": "anaconda/5.1.0-py27",
+                "children": [
+                  {
+                     "name": "ml-toolkit-cpu",
+                     "parent": "learning/conda-5.1.0-py36-cpu",
+                  }
+                ]
               },
             ]
           },
@@ -63,7 +69,13 @@ var treeData = [
             "children": [
               {
                 "name": "learning/conda-5.1.0-py36-cpu",
-                "parent": "anaconda/5.1.0-py36"
+                "parent": "anaconda/5.1.0-py36",
+                "children": [
+                  {
+                     "name": "ml-toolkit-cpu",
+                     "parent": "learning/conda-5.1.0-py36-cpu",
+                  }
+                ]
               },
             ]
           },
@@ -85,7 +97,39 @@ var treeData = [
             "children": [
               {
                 "name": "learning/conda-2020.11-py38-cpu",
-                "parent": "anaconda/2020.11-py38"
+                "parent": "anaconda/2020.11-py38",
+                "children": [
+                  {
+                     "name": "ml-toolkit-cpu",
+                     "parent": "learning/conda-2020.11-py38-cpu",
+                     "children": [
+                       {
+                         "name": "ml-toolkit-cpu/gym/0.18.0",
+                         "parent": "ml-toolkit-cpu",
+                       },
+                       {
+                         "name": "ml-toolkit-cpu/keras/2.4.3",
+                         "parent": "ml-toolkit-cpu",
+                       },
+                       {
+                         "name": "ml-toolkit-cpu/mxnet/1.7.0",
+                         "parent": "ml-toolkit-cpu",
+                       },
+                       {
+                         "name": "ml-toolkit-cpu/opencv/4.5.1",
+                         "parent": "ml-toolkit-cpu",
+                       },
+                       {
+                         "name": "ml-toolkit-cpu/pytorch/1.7.1",
+                         "parent": "ml-toolkit-cpu",
+                       },
+                       {
+                         "name": "ml-toolkit-cpu/theano/1.0.5",
+                         "parent": "ml-toolkit-cpu",
+                       },
+                     ]
+                  }
+                ]
               },
             ]
           }
@@ -581,11 +625,23 @@ var treeData = [
                 "children": [
                   {
                     "name": "learning/conda-5.1.0-py27-gpu",
-                    "parent": "cudnn/cuda-9.0_7.4"
+                    "parent": "cudnn/cuda-9.0_7.4",
+                     "children": [
+                       {
+                         "name": "ml-toolkit-gpu",
+                         "parent": "learning/conda-5.1.0-py27-gpu",
+                       },
+                     ] 
                   },
                   {
                     "name": "learning/conda-5.1.0-py36-gpu",
-                    "parent": "cudnn/cuda-9.0_7.4"
+                    "parent": "cudnn/cuda-9.0_7.4",
+                     "children": [
+                       {
+                         "name": "ml-toolkit-gpu",
+                         "parent": "learning/conda-5.1.0-py36-gpu",
+                       },
+                     ] 
                   }
                 ]
               },
@@ -623,7 +679,13 @@ var treeData = [
                 "children": [
                   {
                     "name": "learning/conda-2020.11-py38-gpu",
-                    "parent": "cudnn/cuda-11.0_8.0"
+                    "parent": "cudnn/cuda-11.0_8.0",
+                     "children": [
+                       {
+                         "name": "ml-toolkit-gpu",
+                         "parent": "learning/conda-2020.11-py38-gpu",
+                       },
+                     ] 
                   },
                 ]
               },
@@ -652,7 +714,7 @@ var treeData = [
 
 // ************** Generate the tree diagram	 *****************
 var margin = {top: 20, right: 20, bottom: 20, left: 120},
-	width = 1440 - margin.right - margin.left,
+	width = 1920 - margin.right - margin.left,
 	height = 2560 - margin.top - margin.bottom;
 	
 var i = 0,
@@ -716,11 +778,16 @@ function update(source) {
 //	  .text(function(d) { return d.name; })
 //	  .style("fill-opacity", 1e-6);
 
-//	  .attr("y", 10)
-//	  .attr("y", function(d) { return d.children || d._children ? -13 : 0; })
+//          .attr("x", function(d) { return d.children || d._children ? -13 : 13; })
+//          .attr("y", function(d) { return d.children || d._children ? 13 : 0; })
+
   nodeEnter.append("text")
-	  .attr("x", 13)
-	  .attr("y", function(d) { return d.children || d._children ? -10 : 0; })
+          .attr("x", function(d) { 
+            if (d.parent == "null"){
+              return -20;
+            } else return 0;
+           })
+          .attr("y", function(d) { return d.children || d._children ? 13 : 0; })
 	  .attr("dy", ".35em")
 	  .text(function(d) { return d.name; })
 	  .style("fill-opacity", 1e-6);
