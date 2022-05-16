@@ -684,6 +684,38 @@ var treeData = [
                        {
                          "name": "ml-toolkit-gpu",
                          "parent": "learning/conda-2020.11-py38-gpu",
+                          "children": [
+                            {
+                               "name": "ml-toolkit-cpu",
+                               "parent": "learning/conda-2020.11-py38-cpu",
+                               "children": [
+                                 {
+                                   "name": "ml-toolkit-cpu/gym/0.18.0",
+                                   "parent": "ml-toolkit-cpu",
+                                 },
+                                 {
+                                   "name": "ml-toolkit-cpu/keras/2.4.3",
+                                   "parent": "ml-toolkit-cpu",
+                                 },
+                                 {
+                                   "name": "ml-toolkit-cpu/mxnet/1.7.0",
+                                   "parent": "ml-toolkit-cpu",
+                                 },
+                                 {
+                                   "name": "ml-toolkit-cpu/opencv/4.5.1",
+                                   "parent": "ml-toolkit-cpu",
+                                 },
+                                 {
+                                   "name": "ml-toolkit-cpu/pytorch/1.7.1",
+                                   "parent": "ml-toolkit-cpu",
+                                 },
+                                 {
+                                   "name": "ml-toolkit-cpu/theano/1.0.5",
+                                   "parent": "ml-toolkit-cpu",
+                                 },
+                               ]
+                            }
+                          ]
                        },
                      ] 
                   },
@@ -784,10 +816,16 @@ function update(source) {
   nodeEnter.append("text")
           .attr("x", function(d) { 
             if (d.parent == "null"){
-              return -20;
-            } else return 0;
+              return -80;
+            } else { return 13;}
            })
-          .attr("y", function(d) { return d.children || d._children ? 13 : 0; })
+          .attr("y", function(d) { 
+            if (d.parent == "null"){
+            return 0;
+           } else if (d.children){
+            return -5;
+           } else { return 0;}
+          })
 	  .attr("dy", ".35em")
 	  .text(function(d) { return d.name; })
 	  .style("fill-opacity", 1e-6);
