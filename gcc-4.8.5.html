@@ -54,12 +54,6 @@ var treeData = [
               {
                 "name": "learning/conda-5.1.0-py27-cpu",
                 "parent": "anaconda/5.1.0-py27",
-                "children": [
-                  {
-                     "name": "ml-toolkit-cpu",
-                     "parent": "learning/conda-5.1.0-py36-cpu",
-                  }
-                ]
               },
             ]
           },
@@ -72,8 +66,54 @@ var treeData = [
                 "parent": "anaconda/5.1.0-py36",
                 "children": [
                   {
-                     "name": "ml-toolkit-cpu",
-                     "parent": "learning/conda-5.1.0-py36-cpu",
+                    "name": "ml-toolkit-cpu",
+                    "parent": "learning/conda-5.1.0-py36-cpu",
+                    "children": [
+                      {
+                        "name": "ml-toolkit-cpu/caffe/1.0.0",
+                        "parent": "learning/conda-5.1.0-py36-cpu",
+                      },
+                      {
+                        "name": "ml-toolkit-cpu/cntk/2.6",
+                        "parent": "learning/conda-5.1.0-py36-cpu",
+                      },
+                      {
+                        "name": "ml-toolkit-cpu/gym/0.10.9",
+                        "parent": "learning/conda-5.1.0-py36-cpu",
+                      },
+                      {
+                        "name": "ml-toolkit-cpu/keras/2.2.4",
+                        "parent": "learning/conda-5.1.0-py36-cpu",
+                      },
+                      {
+                        "name": "ml-toolkit-cpu/opencv/3.4.3",
+                        "parent": "learning/conda-5.1.0-py36-cpu",
+                      },
+                      {
+                        "name": "ml-toolkit-cpu/opencv/4.2.0",
+                        "parent": "learning/conda-5.1.0-py36-cpu",
+                      },
+                      {
+                        "name": "ml-toolkit-cpu/pytorch/1.0.0",
+                        "parent": "learning/conda-5.1.0-py36-cpu",
+                      },
+                      {
+                        "name": "ml-toolkit-cpu/pytorch/1.4.0",
+                        "parent": "learning/conda-5.1.0-py36-cpu",
+                      },
+                      {
+                        "name": "ml-toolkit-cpu/tensorflow/1.12.0",
+                        "parent": "learning/conda-5.1.0-py36-cpu",
+                      },
+                      {
+                        "name": "ml-toolkit-cpu/tflearnl/0.3.2",
+                        "parent": "learning/conda-5.1.0-py36-cpu",
+                      },
+                      {
+                        "name": "ml-toolkit-cpu/theano/1.0.3",
+                        "parent": "learning/conda-5.1.0-py36-cpu",
+                      },
+                    ]
                   }
                 ]
               },
@@ -630,6 +670,52 @@ var treeData = [
                        {
                          "name": "ml-toolkit-gpu",
                          "parent": "learning/conda-5.1.0-py27-gpu",
+                          "children": [
+                           {
+                             "name": "ml-toolkit-cpu/caffe/1.0.0",
+                             "parent": "learning/conda-5.1.0-py27-gpu",
+                           },
+                           {
+                             "name": "ml-toolkit-cpu/cntk/2.6",
+                             "parent": "learning/conda-5.1.0-py27-gpu",
+                           },
+                           {
+                             "name": "ml-toolkit-cpu/gym/0.10.9",
+                             "parent": "learning/conda-5.1.0-py27-gpu",
+                           },
+                           {
+                             "name": "ml-toolkit-cpu/keras/2.2.4",
+                             "parent": "learning/conda-5.1.0-py27-gpu",
+                           },
+                           {
+                             "name": "ml-toolkit-cpu/opencv/3.4.3",
+                             "parent": "learning/conda-5.1.0-py27-gpu",
+                           },
+                           {
+                             "name": "ml-toolkit-cpu/opencv/4.2.0",
+                             "parent": "learning/conda-5.1.0-py27-gpu",
+                           },
+                           {
+                             "name": "ml-toolkit-cpu/pytorch/1.0.0",
+                             "parent": "learning/conda-5.1.0-py27-gpu",
+                           },
+                           {
+                             "name": "ml-toolkit-cpu/pytorch/1.4.0",
+                             "parent": "learning/conda-5.1.0-py27-gpu",
+                           },
+                           {
+                             "name": "ml-toolkit-cpu/tensorflow/1.12.0",
+                             "parent": "learning/conda-5.1.0-py27-gpu",
+                           },
+                           {
+                             "name": "ml-toolkit-cpu/tflearnl/0.3.2",
+                             "parent": "learning/conda-5.1.0-py27-gpu",
+                           },
+                           {
+                             "name": "ml-toolkit-cpu/theano/1.0.3",
+                             "parent": "learning/conda-5.1.0-py27-gpu",
+                           },
+                         ]
                        },
                      ] 
                   },
@@ -640,8 +726,8 @@ var treeData = [
                        {
                          "name": "ml-toolkit-gpu",
                          "parent": "learning/conda-5.1.0-py36-gpu",
-                       },
-                     ] 
+                       }
+                     ]
                   }
                 ]
               },
@@ -747,7 +833,7 @@ var treeData = [
 // ************** Generate the tree diagram	 *****************
 var margin = {top: 20, right: 20, bottom: 20, left: 80},
 	width = 2560 - margin.right - margin.left,
-	height = 2560 - margin.top - margin.bottom;
+	height = 5120 - margin.top - margin.bottom;
 	
 var i = 0,
 	duration = 750,
