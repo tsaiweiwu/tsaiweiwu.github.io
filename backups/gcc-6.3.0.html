@@ -42,52 +42,42 @@ var treeData = [
   {
     "name": "gcc/6.3.0",
     "parent": "null",
-    "type": "black",
     "children": [
       {
         "name": "boost: 1.66.0/1.70.0",
         "parent": "gcc/6.3.0",
-        "type": "black",
       },
       {
         "name": "cmake: 3.15.4",
         "parent": "gcc/6.3.0",
-        "type": "black",
       },
       {
         "name": "fftw/3.3.7",
         "parent": "gcc/6.3.0",
-        "type": "black",
       },
       {
         "name": "hdf/4.2.14",
         "parent": "gcc/6.3.0",
-        "type": "black",
       },
       {
         "name": "hdf5",
         "parent": "gcc/6.3.0",
-        "type": "black",
         "children": [
           {
             "name": "hdf5/1.8.16",
             "parent": "hdf5",
-            "type": "black",
             "children": [
               {
                 "name": "netcdf/4.5.0",
                 "parent": "hdf5/1.8.16",
-                "type": "black",
                 "children": [
                   {
                     "name": "netcdf-cxx4/4.3.0",
                     "parent": "netcdf/4.5.0",
-                    "type": "black",
                   },
                   {
                     "name": "netcdf-fortran/4.4.4",
                     "parent": "netcdf/4.5.0",
-                    "type": "black",
                   }
                 ]
               },
@@ -96,22 +86,18 @@ var treeData = [
           {
             "name": "hdf5/1.10.5",
             "parent": "hdf5",
-            "type": "black",
             "children": [
               {
                 "name": "netcdf/4.7.0",
                 "parent": "hdf5/1.10.5",
-                "type": "black",
                 "children": [
                   {
                     "name": "netcdf-cxx4/4.3.1",
                     "parent": "netcdf/4.7.0",
-                    "type": "black",
                   },
                   {
                     "name": "netcdf-fortran/4.5.2",
                     "parent": "netcdf/4.7.0",
-                    "type": "black",
                   }
 
                 ]
@@ -121,145 +107,128 @@ var treeData = [
         ] 
       },
       {
+        "name": "libtiff/4.0.10",
+        "parent": "gcc/6.3.0",
+	"type": "red",
+      },
+      {
         "name": "netlib-lapack/3.6.0",
         "parent": "gcc/6.3.0",
-	"type": "black",
       },
       {
         "name": "openblas",
         "parent": "gcc/6.3.0",
-	"type": "black",
         "children": [
           {
             "name": "openblas/0.2.20",
             "parent": "openblas",
-	    "type": "black",
           },
           {
             "name": "openblas/0.3.7",
             "parent": "openblas",
-	    "type": "black",
           },
         ]
       },
       {
+        "name": "qt/5.12.5",
+        "parent": "gcc/6.3.0",
+	"type": "red",
+      },
+      {
+        "name": "tcl/8.6.8",
+        "parent": "gcc/6.3.0",
+	"type": "red",
+      },
+      {
+        "name": "texlive/20200406",
+        "parent": "gcc/6.3.0",
+	"type": "red",
+      },
+      {
+        "name": "tk/8.6.8",
+        "parent": "gcc/6.3.0",
+	"type": "red",
+      },
+      {
+        "name": "udunits2/2.2.4",
+        "parent": "gcc/6.3.0",
+	"type": "red",
+      },
+      {
         "name": "zlib/1.2.11",
         "parent": "gcc/6.3.0",
-	"type": "black",
       },
       {
         "name": "cuda",
         "parent": "gcc/6.3.0", 
-	"type": "black",
         "children": [
           {
             "name": "cuda/8.0.61",
             "parent": "cuda",
-	    "type": "black",
             "children": [
               {
                 "name": "openmpi",
                 "parent": "cuda/8.0.61",
-	        "type": "black",
                 "children": [
                   {
                     "name": "openmpi/1.10.7",
                     "parent": "openmpi",
-	            "type": "black",
                   },
                   {
                     "name": "openmpi/2.1.6",
                     "parent": "openmpi",
-	            "type": "black",
                     "children": [
                       {
                         "name": "boost: 1.66.0/1.70.0",
                         "parent": "openmpi/2.1.6",
-	                "type": "black",
                       },
                       {
                         "name": "fftw/3.3.7",
                         "parent": "openmpi/2.1.6",
-                        "type": "black",
                       },
                     ]
                   },
                   {
                     "name": "openmpi/3.1.4",
                     "parent": "openmpi",
-                    "type": "black",
                   },
                 ]
               },
               {
                 "name": "cudnn/cuda-8.0_6.0",
                 "parent": "cuda/8.0.61",
-                "type": "black",
               },
               {
                 "name": "cudnn/cuda-8.0_7.1",
                 "parent": "cuda/8.0.61",
-                "type": "black",
               },
             ]
           },
           {
             "name": "cuda/9.0.176",
             "parent": "cuda",
-            "type": "black",
             "children": [
               {
                 "name": "openmpi",
                 "parent": "cuda",
-                "type": "black",
               },
               {
                 "name": "cudnn/cuda-9.0_7.3",
                 "parent": "cuda/9.0.176",
-                "type": "black",
               },
               {
                 "name": "cudnn/cuda-9.0_7.4",
                 "parent": "cuda/9.0.176",
-                "type": "black",
-                "children": [
-                  {
-                    "name": "learning/conda-5.1.0-py27-gpu",
-                    "parent": "cudnn/cuda-9.0_7.4",
-                    "type": "black",
-                    "children": [
-                       {
-                         "name": "ml-toolkit-gpu",
-                         "parent": "learning/conda-5.1.0-py27-gpu",
-                         "type": "black",
-                       },
-                     ] 
-                  },
-                  {
-                    "name": "learning/conda-5.1.0-py36-gpu",
-                    "parent": "cudnn/cuda-9.0_7.4",
-                    "type": "black",
-                    "children": [
-                       {
-                         "name": "ml-toolkit-gpu",
-                         "parent": "learning/conda-5.1.0-py36-gpu",
-                         "type": "black",
-                       },
-                     ] 
-                  }
-                ]
               },
             ]
           },
           {
             "name": "cuda/10.0.130",
             "parent": "cuda",
-            "type": "black",
             "children": [
               {
                 "name": "openmpi",
                 "parent": "cuda/10.0.130", 
-                "type": "black",
                 "children": [
                  { "name": "lammps/20190807",
                    "parent": "openmpi/3.1.4",
@@ -270,99 +239,48 @@ var treeData = [
               {
                 "name": "cudnn/cuda-10.0_7.5",
                 "parent": "cuda/10.0.130",
-                "type": "black",
               },
             ]
           },
           {
             "name": "cuda/10.2.189",
             "parent": "cuda",
-            "type": "black",
+            "children": [
+              {
+                "name": "openmpi",
+                "parent": "cuda/10.2.189", 
+              },
+              {
+                "name": "cudnn/cuda-10.2_8.0",
+                "parent": "cuda/10.2.189", 
+              },
+            ]
           },
           {
             "name": "cuda/11.0.3",
             "parent": "cuda",
-            "type": "black",
             "children": [
               {
                 "name": "openmpi",
                 "parent": "cuda/11.0.3",
-                "type": "black",
               },
               {
                 "name": "cudnn/cuda-11.0_8.0",
                 "parent": "cuda/11.0.3",
-                "type": "black",
-                "children": [
-                  {
-                    "name": "learning/conda-2020.11-py38-gpu",
-                    "parent": "cudnn/cuda-11.0_8.0",
-                    "type": "black",
-                    "children": [
-                       {
-                         "name": "ml-toolkit-gpu",
-                         "parent": "learning/conda-2020.11-py38-gpu",
-                         "type": "black",
-                         "children": [
-                            {
-                               "name": "ml-toolkit-gpu",
-                               "parent": "learning/conda-2020.11-py38-gpu",
-                               "type": "black",
-                               "children": [
-                                 {
-                                   "name": "ml-toolkit-gpu/gym/0.18.0",
-                                   "parent": "ml-toolkit-gpu",
-                                   "type": "black",
-                                 },
-                                 {
-                                   "name": "ml-toolkit-gpu/keras/2.4.3",
-                                   "parent": "ml-toolkit-gpu",
-                                   "type": "black",
-                                 },
-                                 {
-                                   "name": "ml-toolkit-gpu/mxnet/1.7.0",
-                                   "parent": "ml-toolkit-gpu",
-                                   "type": "black",
-                                 },
-                                 {
-                                   "name": "ml-toolkit-gpu/opencv/4.5.1",
-                                   "parent": "ml-toolkit-gpu",
-                                   "type": "black",
-                                 },
-                                 {
-                                   "name": "ml-toolkit-gpu/pytorch/1.7.1",
-                                   "parent": "ml-toolkit-gpu",
-                                   "type": "black",
-                                 },
-                                 {
-                                   "name": "ml-toolkit-gpu/theano/1.0.5",
-                                   "parent": "ml-toolkit-gpu",
-                                   "type": "black",
-                                 },
-                               ]
-                            }
-                          ]
-                       },
-                     ] 
-                  },
-                ]
               },
             ]
           },
           {
             "name": "cuda/11.2.0",
             "parent": "cuda",
-            "type": "black",
             "children": [
               {
                 "name": "openmpi",
                 "parent": "cuda/11.2.0",
-                "type": "black",
               },
               {
                 "name": "cudnn/cuda-11.2_8.1",
                 "parent": "cuda/11.2.0",
-                "type": "black",
               },
             ] 
           },
