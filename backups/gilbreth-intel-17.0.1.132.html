@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>intel-17.0.1.132</title>
+
+    <style>
+	
+	.node {
+		cursor: pointer;
+	}
+
+	.node circle {
+	  fill: #fff;
+	  stroke: steelblue;
+	  stroke-width: 3px;
+	}
+
+	.node text {
+	  font: 12px sans-serif;
+	}
+
+	.link {
+	  fill: none;
+	  stroke: #ccc;
+	  stroke-width: 4px;
+	}
+	
+    </style>
+
+  </head>
+
+  <body>
+
+<!-- load the d3.js library -->	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+	
+<script>
+
+var treeData = [
+  {
+    "name": "intel/17.0.1.132",
+    "parent": "null",
+    "type": "black",
+    "children": [
+      {
+        "name": "abaqus",
+        "parent": "intel/17.0.1.132",
+        "type": "red",
+        "children": [
+          {
+            "name": "abaqus/6.14.6",
+            "parent": "abaqus",
+            "type": "black",
+          },
+          {
+            "name": "abaqus/2017",
+            "parent": "abaqus"
+          },
+          {
+            "name": "abaqus/2018",
+            "parent": "abaqus"
+          },
+          {
+            "name": "abaqus/2019",
+            "parent": "abaqus"
+          },
+          {
+            "name": "abaqus/2020",
+            "parent": "abaqus"
+          },
+          {
+            "name": "abaqus/2021",
+            "parent": "abaqus"
+          }
+        ]
+      },
+      {
+        "name": "boost: 1.66.0/1.70.0",
+        "parent": "intel/17.0.1.132",
+      },
+      {
+        "name": "cmake/3.15.4",
+        "parent": "intel/17.0.1.132"
+      },
+      {
+        "name": "fftw/3.3.7",
+        "parent": "intel/17.0.1.132"
+      },
+      {
+        "name": "hdf/4.2.14",
+        "parent": "intel/17.0.1.132"
+      },
+      {
+        "name": "hdf5",
+        "parent": "intel/17.0.1.132",
+        "children": [
+          {
+            "name": "hdf5/1.8.16",
+            "parent": "hdf5",
+            "children": [
+              {
+                "name": "netcdf/4.5.0",
+                "parent": "hdf5/1.8.16",
+                "children": [
+                  {
+                    "name": "netcdf-cxx4/4.3.0",
+                    "parent": "netcdf/4.5.0",
+                  },
+                  {
+                    "name": "netcdf-fortran/4.4.4",
+                    "parent": "netcdf/4.5.0",
+                  }
+                ]
+              },
+            ]
+          },
+          {
+            "name": "hdf5/1.10.5",
+            "parent": "hdf5",
+            "children": [
+              {
+                "name": "netcdf/4.7.0",
+                "parent": "hdf5/1.10.5",
+                "children": [
+                  {
+                    "name": "netcdf-cxx4/4.3.1",
+                    "parent": "netcdf/4.7.0",
+                  },
+                  {
+                    "name": "netcdf-fortran/4.5.2",
+                    "parent": "netcdf/4.7.0",
+                  }
+
+                ]
+              },
+            ]
+          },
+        ] 
+      },
+      {
+        "name": "netcdf-forrtran",
+        "parent": "intel/17.0.1.132",
+        "children": [
+          {
+            "name": "netcdf-fortran/4.4.4",
+            "parent": "netcdf-forrtran",
+          },
+          {
+            "name": "netcdf-fortran/4.5.2",
+            "parent": "netcdf-forrtran",
+          },
+        ]
+      },
+      {
+        "name": "libtiff/4.0.10",
+        "parent": "intel/17.0.1.132",
+        "type": "red"
+      },
+      {
+        "name": "impi/2017.1.132",
+        "parent": "intel/17.0.1.132",
+        "children": [
+          {
+            "name": "amber/16",
+            "parent": "intel/17.0.1.132",
+            "type": "red",
+          },
+          {
+            "name": "boost: 1.66.0/1.70.0",
+            "parent": "impi/2019.3.199", 
+          },
+          {
+            "name": "fftw/3.3.7",
+            "parent": "impi/2019.3.199"
+          },
+          {
+            "name": "gamess/30.Jun.2019",
+            "parent": "intel/17.0.1.132",
+            "type": "red"
+          },
+          {
+            "name": "gromacs",
+            "parent": "intel/17.0.1.132",
+            "type": "red",
+            "children": [
+              {
+                "name": "gromacs/2018.4",
+                "parent": "gromacs",
+                "type": "red",
+              },
+              {
+                "name": "gromacs/2019.2",
+                "parent": "gromacs",
+                "type": "red",
+              }
+            ]
+          },
+          {
+            "name": "lammps",
+            "parent": "intel/17.0.1.132",
+            "type": "red",
+            "children": [
+              {
+                "name": "lammps/22Aug18_gpu",
+                "parent": "lammps",
+                "type": "red",
+              },
+              {
+                "name": "lammps/22Aug18",
+                "parent": "lammps",
+                "type": "red",
+              },
+              {
+                "name": "lammps/7Aug19_gpu",
+                "parent": "lammps",
+                "type": "red",
+              },
+              {
+                "name": "lammps/7Aug19",
+                "parent": "lammps",
+                "type": "red",
+              },
+            ]
+          },
+        ]
+      },
+      {
+        "name": "namd/2.13",
+        "parent": "intel/17.0.1.132",
+        "type": "red"
+      },
+      {
+        "name": "netlib-lapack/3.6.0",
+        "parent": "intel/17.0.1.132"
+      },
+      {
+        "name": "openblas",
+        "parent": "intel/17.0.1.132",
+        "children": [
+          {
+            "name": "openblas/0.2.20",
+            "parent": "openblas",
+          },
+          {
+            "name": "openblas/0.3.7",
+            "parent": "openblas",
+          },
+        ]
+      },
+      {
+        "name": "openmpi + cuda/10.0.130",
+        "parent": "intel/17.0.1.132",
+        "children": [
+          {
+            "name": "openmpi/1.10.7",
+            "parent": "intel/17.0.1.132",
+          },
+          {
+            "name": "openmpi/2.1.6",
+            "parent": "intel/17.0.1.132",
+            "children": [
+              {
+                "name": "boost: 1.66.0/1.70.0",
+                "parent": "openmpi/2.1.6",
+              },
+              {
+                "name": "fftw/3.3.7",
+                "parent": "openmpi/2.1.6",
+              }
+            ]
+          },
+          {
+            "name": "openmpi/3.1.4",
+            "parent": "intel/17.0.1.132",
+          },
+        ]
+      },
+      {
+        "name": "tcl/8.6.8",
+        "parent": "intel/17.0.1.132",
+        "type": "red"
+      },
+      {
+        "name": "tk/8.6.8",
+        "parent": "intel/17.0.1.132",
+        "type": "red"
+      },
+      {
+        "name": "zlib/1.2.11",
+        "parent": "intel/17.0.1.132",
+      },
+    ]
+  }
+];
+
+
+// ************** Generate the tree diagram	 *****************
+var margin = {top: 20, right: 60, bottom: 20, left: 120},
+	width = 1200 - margin.right - margin.left,
+	height = 1800 - margin.top - margin.bottom;
+	
+var i = 0,
+	duration = 750,
+	root;
+
+var tree = d3.layout.tree()
+	.size([height, width]);
+
+var diagonal = d3.svg.diagonal()
+	.projection(function(d) { return [d.y, d.x]; });
+
+var svg = d3.select("body").append("svg")
+	.attr("width", width + margin.right + margin.left)
+	.attr("height", height + margin.top + margin.bottom)
+  .append("g")
+	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+root = treeData[0];
+root.x0 = height / 2;
+root.y0 = 0;
+  
+update(root);
+
+d3.select(self.frameElement).style("height", "500px");
+
+function update(source) {
+
+  // Compute the new tree layout.
+  var nodes = tree.nodes(root).reverse(),
+	  links = tree.links(nodes);
+
+  // Normalize for fixed-depth.
+  nodes.forEach(function(d) { d.y = d.depth * 240; });
+
+  // Update the nodes?
+  var node = svg.selectAll("g.node")
+	  .data(nodes, function(d) { return d.id || (d.id = ++i); });
+
+  // Enter any new nodes at the parent's previous position.
+  var nodeEnter = node.enter().append("g")
+	  .attr("class", "node")
+	  .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
+	  .on("click", click);
+
+  nodeEnter.append("circle")
+	  .attr("r", 1e-6)
+	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+  nodeEnter.append("text")
+          .attr("x", function(d) { 
+            if (d.parent == "null"){
+              return -120;
+            } else { return 13;}
+           })
+          .attr("y", function(d) { 
+            if (d.parent == "null"){
+            return 0;
+           } else if (d.children){
+            return -8;
+           } else { return 0;}
+          })
+	  .attr("dy", ".35em")
+	  .text(function(d) { return d.name; })
+	  .style("fill-opacity", 1e-6);
+
+  // Transition nodes to their new position.
+  var nodeUpdate = node.transition()
+	  .duration(duration)
+	  .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
+
+  nodeUpdate.select("circle")
+	  .attr("r", 10)
+	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+  nodeUpdate.select("text")
+	  .style("fill-opacity", 1);
+
+  // Transition exiting nodes to the parent's new position.
+  var nodeExit = node.exit().transition()
+	  .duration(duration)
+	  .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
+	  .remove();
+
+  nodeExit.select("circle")
+	  .attr("r", 1e-6);
+
+  nodeExit.select("text")
+	  .style("fill-opacity", 1e-6);
+
+  nodeUpdate.select("text")
+	  .style("fill", function(d){
+          if (d.type == "red"){return "red";}});
+
+  // Update the links?
+  var link = svg.selectAll("path.link")
+	  .data(links, function(d) { return d.target.id; });
+
+  // Enter any new links at the parent's previous position.
+  link.enter().insert("path", "g")
+	  .attr("class", "link")
+	  .attr("d", function(d) {
+		var o = {x: source.x0, y: source.y0};
+		return diagonal({source: o, target: o});
+	  });
+
+  // Transition links to their new position.
+  link.transition()
+	  .duration(duration)
+	  .attr("d", diagonal);
+
+  // Transition exiting nodes to the parent's new position.
+  link.exit().transition()
+	  .duration(duration)
+	  .attr("d", function(d) {
+		var o = {x: source.x, y: source.y};
+		return diagonal({source: o, target: o});
+	  })
+	  .remove();
+
+  // Stash the old positions for transition.
+  nodes.forEach(function(d) {
+	d.x0 = d.x;
+	d.y0 = d.y;
+  });
+}
+
+// Toggle children on click.
+function click(d) {
+  if (d.children) {
+	d._children = d.children;
+	d.children = null;
+  } else {
+	d.children = d._children;
+	d._children = null;
+  }
+  update(d);
+}
+
+</script>
+	
+  </body>
+</html>
