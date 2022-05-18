@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Anvil gcc-8.4.1</title>
+
+    <style>
+	
+	.node {
+		cursor: pointer;
+	}
+
+	.node circle {
+	  fill: #fff;
+	  stroke: steelblue;
+	  stroke-width: 3px;
+	}
+
+	.node text {
+	  font: 12px sans-serif;
+	}
+
+	.link {
+	  fill: none;
+	  stroke: #ccc;
+	  stroke-width: 2px;
+	}
+	
+    </style>
+
+  </head>
+
+  <body>
+
+<!-- load the d3.js library -->	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+	
+<script>
+
+var treeData = [
+  {
+    "name": "gcc/8.4.1",
+    "parent": "null",
+    "children": [
+      {
+        "name": "anaconda/2021.05-py38",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "aocc/3.1.0",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "aws-cli/2.4.15",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "boost/1.74.0",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "cmake/3.20.0",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "cue-login-env/1.1",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "emacs/27.2",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "gdb/11.1",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "gmp/6.2.1",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "hdf/4.2.15",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "hdf5/1.10.7",
+        "parent": "gcc/8.4.1",
+        "children": [
+          {
+            "name": "netcdf-c/4.7.4",
+            "parent": "hdf5/1.10.7",
+            "children": [
+              {
+                "name": "netcdf-cxx4/4.3.1",
+                "parent": "netcdf-c/4.7.4",
+              },
+              {
+                "name": "netcdf-fortran/4.5.3",
+                "parent": "netcdf-c/4.7.4",
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "hwloc/1.11.13",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "julia/1.6.2",
+        "parent": "gcc/8.4.1",
+      },
+      {
+        "name": "texlive/20200406",
+        "parent": "gcc/8.4.1",
+        "children": [
+          {
+            "name": "jupyter/2.0.0",
+            "parent": "texlive/20200406"
+          },
+        ]
+      },
+      {
+        "name": "libfabric/1.12.0",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "libszip/2.1.1",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "libtiff/4.0.10",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "monitor/2.3.1",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "mpc/1.1.0",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "mpfr/4.0.2",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "numactl/2.0.14",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "nvhpc/21.7",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "openblas/0.3.17",
+        "parent": "gcc/8.4.1",
+      },
+      {
+        "name": "openjdk/11.0.8_10",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "papi/6.0.0.1",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "parallel/20200822",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "protobuf/3.11.4",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "python/3.9.5",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "tcl/8.6.11",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "tk/8.6.11",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "totalview/2020.2.6",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "ucx/1.11.2",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "valgrind/3.15.0",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "vscode/1.61.2",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "zlib/1.2.11",
+        "parent": "gcc/8.4.1"
+      },
+      {
+        "name": "cuda",
+        "parent": "gcc/8.4.1", 
+        "children": [
+          {
+            "name": "cuda/11.0.3",
+            "parent": "cuda",
+            "children": [
+              {
+                "name": "openmpi/4.0.6-cu11.0.3",
+                "parent": "cuda/11.0.3",
+              },
+              {
+                "name": "cudnn/cuda-11.0_8.0",
+                "parent": "cuda/8.0.61"
+              },
+            ]
+          },
+          {
+            "name": "cuda/11.2.2",
+            "parent": "cuda",
+            "children": [
+            {
+              "name": "mvapich2/2.3.6",
+              "parent": "cuda",
+               "children": [
+                 {
+                   "name": "boost/1.74.0",
+                   "parent": "mvapich2/2.3.6"
+                 },
+                 {
+                   "name": "hdf5/1.10.7",
+                   "parent": "mvapich2/2.3.6",
+                   "children": [
+                     {
+                        "name": "netcdf-c/4.7.4",
+                        "parent": "hdf5/1.10.7",
+			"children": [
+                          {
+                            "name": "netcdf-cxx4/4.3.1",
+                            "parent": "hdf5/1.10.7",
+                          },
+                          {
+                            "name": "netcdf-fotran/4.5.3",
+                            "parent": "hdf5/1.10.7",
+                          }
+                        ]
+                     },
+                     {
+                       "name": " hpctoolkit/2021.03.01",
+                       "parent": "openmpi/4.0.6"
+                     },
+                   ]
+                 },
+                 {
+                   "name": " parallel-netcdf/1.11.2",
+                   "parent": "openmpi/4.0.6"
+                 },
+               ]
+              },
+              {
+                "name": "openmpi",
+                "parent": "cuda",
+                "children": [
+                  {
+                    "name": "openmpi/3.1.6",
+                    "parent": "openmpi",
+                    "children": [
+                      {
+		        "name": "copy mvapich2/2.3.6",
+                        "parent": "openmpi/3.1.6"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "openmpi/4.0.6",
+                    "parent": "openmpi",
+                    "children": [
+                      {
+                        "name": "copy mvapich2/2.3.6",
+                        "parent": "openmpi/4.0.6"
+                      },
+                      {
+                        "name": "cp2k/8.2",
+                        "parent": "openmpi/4.0.6"
+                      },
+                      {
+                        "name": "gromacs/2021.2",
+                        "parent": "openmpi/4.0.6"
+                      },
+                      {
+                        "name": " lammps/20210310-kokkos",
+                        "parent": "openmpi/4.0.6"
+                      },
+                      {
+                        "name": " lammps/20210310",
+                        "parent": "openmpi/4.0.6"
+                      },
+                      {
+                        "name": " namd/2.14",
+                        "parent": "openmpi/4.0.6"
+                      },
+                      {
+                        "name": " pi-mpi4py/3.0.3",
+                        "parent": "openmpi/4.0.6"
+                      },
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "cudnn/cuda-11.2_8.1",
+                "parent": "cuda/11.2.2",
+              },
+            ]
+	  },
+          {
+            "name": "cuda/11.4.2",
+            "parent": "cuda",
+            "children": [
+              {
+                "name": "cudnn/cuda-11.4_8.2",
+                "parent": "cuda/11.4.2",
+              },
+            ]
+          },
+        ]
+      }
+    ]
+  }
+];
+
+
+// ************** Generate the tree diagram	 *****************
+var margin = {top: 20, right: 20, bottom: 20, left: 80},
+	width = 2560 - margin.right - margin.left,
+	height = 2560 - margin.top - margin.bottom;
+	
+var i = 0,
+	duration = 750,
+	root;
+
+var tree = d3.layout.tree()
+	.size([height, width]);
+
+var diagonal = d3.svg.diagonal()
+	.projection(function(d) { return [d.y, d.x]; });
+
+var svg = d3.select("body").append("svg")
+	.attr("width", width + margin.right + margin.left)
+	.attr("height", height + margin.top + margin.bottom)
+        .append("g")
+	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+//var svg = d3.select("body").append("svg")
+//          .attr("width", width)
+//          .attr("height", height)
+//          .attr("viewBox","-25 -25 " + (width+25) + (height+25)) 
+//          .append("g")     
+//          .attr("transform", "translate(40,0)");
+
+root = treeData[0];
+root.x0 = height / 2;
+root.y0 = 0;
+  
+update(root);
+
+d3.select(self.frameElement).style("height", "500px");
+
+function update(source) {
+
+  // Compute the new tree layout.
+  var nodes = tree.nodes(root).reverse(),
+	  links = tree.links(nodes);
+
+  // Normalize for fixed-depth.
+  nodes.forEach(function(d) { d.y = d.depth * 240; });
+
+  // Update the nodes?
+  var node = svg.selectAll("g.node")
+	  .data(nodes, function(d) { return d.id || (d.id = ++i); });
+
+  // Enter any new nodes at the parent's previous position.
+  var nodeEnter = node.enter().append("g")
+	  .attr("class", "node")
+	  .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
+	  .on("click", click);
+
+  nodeEnter.append("circle")
+	  .attr("r", 2e-7)
+	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+//  nodeEnter.append("text")
+//	  .attr("x", function(d) { return d.children || d._children ? -13 : 13; })
+//	  .attr("dy", ".35em")
+//	  .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
+//	  .text(function(d) { return d.name; })
+//	  .style("fill-opacity", 1e-6);
+
+//          .attr("x", function(d) { return d.children || d._children ? -13 : 13; })
+//          .attr("y", function(d) { return d.children || d._children ? 13 : 0; })
+
+  nodeEnter.append("text")
+          .attr("x", function(d) { 
+            if (d.parent == "null"){
+              return -80;
+            } else { return 13;}
+           })
+          .attr("y", function(d) { 
+            if (d.parent == "null"){
+            return 0;
+           } else if (d.children){
+            return -5;
+           } else { return 0;}
+          })
+	  .attr("dy", ".35em")
+	  .text(function(d) { return d.name; })
+	  .style("fill-opacity", 1e-6);
+
+  // Transition nodes to their new position.
+  var nodeUpdate = node.transition()
+	  .duration(duration)
+	  .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
+
+  nodeUpdate.select("circle")
+	  .attr("r", 8)
+	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+  nodeUpdate.select("text")
+	  .style("fill-opacity", 1);
+
+  // Transition exiting nodes to the parent's new position.
+  var nodeExit = node.exit().transition()
+	  .duration(duration)
+	  .attr("transform", function(d) { return "translate(" + source.y + "," + source.x + ")"; })
+	  .remove();
+
+  nodeExit.select("circle")
+	  .attr("r", 1e-6);
+
+  nodeExit.select("text")
+	  .style("fill-opacity", 1e-6);
+
+  // Update the links?
+  var link = svg.selectAll("path.link")
+	  .data(links, function(d) { return d.target.id; });
+
+  // Enter any new links at the parent's previous position.
+  link.enter().insert("path", "g")
+	  .attr("class", "link")
+	  .attr("d", function(d) {
+		var o = {x: source.x0, y: source.y0};
+		return diagonal({source: o, target: o});
+	  });
+
+  // Transition links to their new position.
+  link.transition()
+	  .duration(duration)
+	  .attr("d", diagonal);
+
+  // Transition exiting nodes to the parent's new position.
+  link.exit().transition()
+	  .duration(duration)
+	  .attr("d", function(d) {
+		var o = {x: source.x, y: source.y};
+		return diagonal({source: o, target: o});
+	  })
+	  .remove();
+
+  // Stash the old positions for transition.
+  nodes.forEach(function(d) {
+	d.x0 = d.x;
+	d.y0 = d.y;
+  });
+}
+
+// Toggle children on click.
+function click(d) {
+  if (d.children) {
+	d._children = d.children;
+	d.children = null;
+  } else {
+	d.children = d._children;
+	d._children = null;
+  }
+  update(d);
+}
+
+</script>
+	
+  </body>
+</html>
